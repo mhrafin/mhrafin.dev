@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+:root {
+  --text-strong: #fafbfc;
+  --text-weak: #ced2d9;
+  --stroke-strong: #959ba6;
+  --stroke-weak: #363a40;
+  --fill-background: #1f2126;
+  --base-background: #12151a;
+  --raised-background: #191c21;
+  --overlay-background: #212429;
+  --brand: #97bdfc;
+  --fill-transparent-6: --alpha(var(--text-strong)/6%);
+  --stroke-weak-transparent-12: --alpha(var(--text-strong)/12%);
+  --stroke-strong-transparent-60: --alpha(var(--text-strong)/60%);
+  --text-weak-transparent-78: --alpha(var(--text-strong)/78%);
+}
+
+@theme inline {
+  --color-text-strong: var(--text-strong);
+  --color-text-weak: var(--text-weak);
+  --color-stroke-strong: var(--stroke-strong);
+  --color-stroke-weak: var(--stroke-weak);
+  --color-fill-background: var(--fill-background);
+  --color-base-background: var(--base-background);
+  --color-raised-background: var(--raised-background);
+  --color-overlay-background: var(--overlay-background);
+  --color-brand: var(--brand);
+  --color-fill-transparent-6: var(--fill-transparent-6);
+  --color-stroke-weak-transparent-12: var(--stroke-weak-transparent-12);
+  --color-stroke-strong-transparent-60: var(--stroke-strong-transparent-60);
+  --color-text-weak-transparent-78: var(--text-weak-transparent-78);
+
+  --font-sans-serif: var(--font-inter);
+  --font-display: var(--font-inter);
+}
