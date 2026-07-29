@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+import MHRafinImage from "../../images/mhrafin.jpg";
+---
+
+<section id="home-about-me-section">
+  <div class="flex flex-col items-center justify-center h-screen">
+    <div class="grid grid-cols-4 gap-0 w-full *:h-96">
+      <div
+        class="border-y border-stroke-strong text-[280px] font-black col-span-2 flex items-center justify-center"
+      >
+        ABOU
+      </div>
+      <div class="border border-stroke-strong p-10">
+        <div class="h-full w-full overflow-hidden rounded-sm relative">
+          <Image
+            src={MHRafinImage}
+            alt="Image of mhrafin"
+            class="h-full w-full object-cover object-left scale-125 origin-left"
+          />
+          <div class="absolute inset-0 bg-brand/50 mix-blend-multiply"></div>
+        </div>
+      </div>
+      <div
+        class="border-y border-stroke-strong text-[280px] font-black flex items-center justify-center"
+      >
+        T
+      </div>
+      <div
+        class="border-b border-stroke-strong text-[280px] font-black flex items-center justify-center"
+      >
+        M
+      </div>
+      <div
+        class="border-b border-x border-stroke-strong text-justify flex items-center p-5"
+      >
+        Lorem ipsum dolor sit amet consectetur. Accumsan integer gravida aliquam
+        facilisi accumsan in. Risus vehicula nunc at lacus amet placerat. Turpis
+        lacus eu enim id non lectus faucibus. Lectus at maecenas convallis nunc.
+        Pellentesque.
+      </div>
+      <div
+        class="border-b border-stroke-strong text-[280px] font-black flex items-center justify-center"
+      >
+        E
+      </div>
+      <div
+        class="border-b border-x border-stroke-strong text-justify flex items-center p-5"
+      >
+        Lorem ipsum dolor sit amet consectetur. Accumsan integer gravida aliquam
+        facilisi accumsan in. Risus vehicula nunc at lacus amet placerat. Turpis
+        lacus eu enim id non lectus faucibus. Lectus at maecenas convallis nunc.
+        Pellentesque.
+      </div>
+    </div>
+  </div>
+</section>
