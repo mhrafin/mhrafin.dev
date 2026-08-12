@@ -1,0 +1,96 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  experience: CollectionEntry<"experiences">;
+  index: number;
+  isFirst?: Boolean;
+  isLast?: Boolean;
+}
+
+const { experience, index, isFirst, isLast } = Astro.props;
+const {
+  organization,
+  jobTitle,
+  startDate,
+  endDate,
+  location,
+  skills,
+  highlight,
+} = experience.data;
+
+const fmt = new Intl.DateTimeFormat("en", { month: "short", year: "2-digit" });
+const start = fmt.format(startDate);
+const end = endDate ? fmt.format(endDate) : "Present";
+
+const side = index % 2 === 0 ? "right" : "left";
+---
+
+<div class={`grid grid-cols-[1fr_auto_1fr]`}>
+  <div class="flex flex-col text-right px-2 py-1">
+    {
+      side === "left" && (
+        <>
+          <span class="font-bold">{jobTitle}</span>
+          <span class="">{organization}</span>
+          {highlight && (
+            <div class="text-base text-justify [text-align-last:right] w-100 text-text-weak">
+              {highlight}
+            </div>
+          )}
+          {skills && (
+            <div class="flex flex-wrap gap-1 mt-1 flex-row-reverse">
+              {skills.map((t) => (
+                <span class="rounded-full bg-fill-transparent-6 px-2 py-0.5 text-xs text-text-weak-transparent-78">
+                  {t}
+                </span>
+              ))}
+            </div>
+          )}
+        </>
+      )
+    }
+  </div>
+
+  <div class="flex flex-col items-center mx-10">
+    <div
+      class={`grid grid-cols-[1fr_auto_1fr] items-center rounded-full  ${isFirst ? "bg-brand text-fill-background" : "bg-raised-background"} px-2 py-1`}
+    >
+      <span class="text-right">{start}</span>
+      <span class="px-1 justify-self-center">-</span>
+      <span class="text-left">{end}</span>
+    </div>
+
+    {
+      !isLast && (
+        <div
+          class={`min-h-36 h-full border ${isFirst ? "border-brand" : "border-stroke-strong"} my-5 w-0`}
+        />
+      )
+    }
+  </div>
+  <div class="flex flex-col text-left px-2 py-1">
+    {
+      side === "right" && (
+        <>
+          <span class="font-bold">{jobTitle}</span>
+          <span class="">{organization}</span>
+          {highlight && (
+            <div class="text-base text-justify w-100 text-text-weak">
+              {highlight}
+            </div>
+          )}
+          {skills && (
+            <div class="flex flex-wrap gap-1 mt-1">
+              {skills.map((t) => (
+                <span class="rounded-full bg-fill-transparent-6 px-2 py-0.5 text-xs text-text-weak-transparent-78">
+                  {t}
+                </span>
+              ))}
+            </div>
+          )}
+        </>
+      )
+    }
+  </div>
+</div>

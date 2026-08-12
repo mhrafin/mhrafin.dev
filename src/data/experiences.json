@@ -1,0 +1,29 @@
+{
+  "1": {
+    "organization": "Next Page Technology Ltd.",
+    "jobTitle": "Python Developer Intern",
+    "startDate": "2025-03",
+    "endDate": "2025-06",
+    "location": "Dhaka, Bangladesh",
+    "skills": ["ERP", "Odoo"],
+    "highlight": "Deployed and maintained Python web apps across AWS EC2, DigitalOcean, and OVHCloud. Extended an enterprise Python application with custom modules."
+  },
+  "2": {
+    "organization": "Next Page Technology Ltd.",
+    "jobTitle": "Jr. Software Engineer",
+    "startDate": "2025-07",
+    "endDate": "2026-03",
+    "location": "Dhaka, Bangladesh",
+    "skills": ["DRF", "System Design"],
+    "highlight": "Led migration of an School Management System from CodeIgniter to DRF, designed C4-based architecture, built CI/CD, eliminated N+1 queries which cut API response time from 22s to 2s."
+  },
+  "3": {
+    "organization": "Self-employed",
+    "jobTitle": "Freelance Software Engineer",
+    "startDate": "2026-04",
+
+    "location": "Dhaka, Bangladesh",
+    "skills": ["Python", "DRF", "FastAPI", "PostgreSQL", "RAG"],
+    "highlight": "Working independently with clients on backend and full-stack projects, including a CMS platform, a startup landing page, and a government-sector engagement."
+  }
+}
