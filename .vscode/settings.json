@@ -1,7 +1,5 @@
 {
-  "[astro]": {
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "never"
-    }
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "never"
   }
 }
