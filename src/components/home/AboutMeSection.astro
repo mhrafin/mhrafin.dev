@@ -4,14 +4,18 @@ import MHRafinImage from "../../images/mhrafin.jpg";
 ---
 
 <section id="home-about-me-section">
-  <div class="flex flex-col items-center justify-center h-screen">
-    <div class="grid grid-cols-4 gap-0 w-full *:h-96">
+  <div class="flex flex-col items-center justify-center min-h-svh">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 w-full border-t lg:*:h-96"
+    >
       <div
-        class="border-y border-stroke-strong text-[280px] font-black font-display col-span-2 flex items-center justify-center"
+        class="border-b lg:border-y border-stroke-strong text-[clamp(4rem,18vw,17.5rem)] font-black font-display col-span-1 sm:col-span-2 h-40 sm:h-48 flex items-center justify-center"
       >
         ABOU
       </div>
-      <div class="border border-stroke-strong p-10">
+      <div
+        class="border border-stroke-strong p-3 sm:p-6 lg:p-12 h-72 sm:h-80 lg:h-96"
+      >
         <div class="h-full w-full overflow-hidden rounded-xs relative">
           <Image
             src={MHRafinImage}
@@ -22,17 +26,17 @@ import MHRafinImage from "../../images/mhrafin.jpg";
         </div>
       </div>
       <div
-        class="border-y border-stroke-strong text-[280px] font-black font-display flex items-center justify-center"
+        class="border-b lg:border-y border-stroke-strong text-[clamp(4rem,18vw,17.5rem)] font-black font-display h-40 sm:h-48 flex items-center justify-center"
       >
         T
       </div>
       <div
-        class="border-b border-stroke-strong text-[280px] font-black font-display flex items-center justify-center"
+        class="border-b border-stroke-strong text-[clamp(4rem,18vw,17.5rem)] font-black font-display h-40 sm:h-48 flex items-center justify-center"
       >
         M
       </div>
       <div
-        class="border-b border-l border-stroke-strong text-justify flex items-center p-5"
+        class="border-b lg:border-l border-stroke-strong text-justify flex items-center p-5 min-h-40 sm:min-h-56"
       >
         I've spent the last year building backend systems that hold up under
         real use. I built 80+ REST API endpoints as the sole backend developer
@@ -42,12 +46,12 @@ import MHRafinImage from "../../images/mhrafin.jpg";
         and PostgreSQL.
       </div>
       <div
-        class="border-b border-x border-stroke-strong text-[280px] font-black font-display flex items-center justify-center"
+        class="border-b lg:border-x border-stroke-strong text-[clamp(4rem,18vw,17.5rem)] font-black font-display h-40 sm:h-48 flex items-center justify-center"
       >
         E
       </div>
       <div
-        class="border-b border-stroke-strong text-justify flex items-center p-5"
+        class="border-b border-stroke-strong text-justify flex items-center p-5 min-h-40 sm:min-h-56"
       >
         Outside of client work, I build things to stay sharp. I've shipped a
         GPT-4o travel planner, a meeting scheduler, and I'm currently exploring
