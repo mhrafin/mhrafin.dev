@@ -1,13 +1,18 @@
 ---
 import { Image } from "astro:assets";
 import GetInTouch from "../../images/get_in_touch.svg";
-import { ArrowDownRight, ArrowUpRight } from "@lucide/astro";
-import { Icon } from "astro-icon/components";
+import {
+  ArrowDownRight,
+  ArrowUpRight,
+  AtSign,
+  Mail,
+  Send,
+} from "@lucide/astro";
 ---
 
 <section id="home-contact-section">
   <div
-    class="flex flex-col gap-25 min-h-screen mx-60 my-30 p-30 bg-raised-background rounded-xs"
+    class="flex flex-col gap-25 mx-60 my-30 p-30 bg-raised-background rounded-xs"
   >
     <div class="grid grid-cols-3">
       <h2 class="col-span-2 text-9xl font-display font-black">
@@ -27,7 +32,11 @@ import { Icon } from "astro-icon/components";
       form and I will get back to you in the next 24 hours.
     </p>
     <div class="grid grid-cols-3">
-      <form action="" method="POST" class="col-span-2 flex flex-col gap-10">
+      <form
+        id="contact-form"
+        method="POST"
+        class="col-span-2 flex flex-col gap-10"
+      >
         <div class="grid grid-cols-[auto_1fr] gap-10 max-w-150">
           <div class="flex items-start">
             <div class="flex-none rounded-full bg-overlay-background px-3 py-1">
@@ -44,6 +53,7 @@ import { Icon } from "astro-icon/components";
          focus:border-stroke-strong outline-none transition-colors py-3"
               autocomplete="name"
             />
+            <p id="name-error" class="text-red-400 text-sm"></p>
           </div>
         </div>
         <div class="grid grid-cols-[auto_1fr] gap-10 max-w-150">
@@ -62,6 +72,7 @@ import { Icon } from "astro-icon/components";
          focus:border-stroke-strong outline-none transition-colors py-3"
               autocomplete="email"
             />
+            <p id="email-error" class="text-red-400 text-sm"></p>
           </div>
         </div>
         <div class="grid grid-cols-[auto_1fr] gap-10 max-w-150">
@@ -72,19 +83,22 @@ import { Icon } from "astro-icon/components";
           </div>
           <div class="flex flex-col py-1">
             <label>What's your message?</label>
-            <input
-              type="text"
+            <textarea
               name="message"
               required
+              rows={4}
               class="w-full bg-transparent border-0 border-b-2 border-stroke-weak
-         focus:border-stroke-strong outline-none transition-colors py-3"
-              autocomplete="message"
-            />
+         focus:border-stroke-strong outline-none transition-colors py-3 resize-none"
+            ></textarea>
+            <p id="message-error" class="text-red-400 text-sm"></p>
           </div>
         </div>
+        <p id="form-error" class="text-red-400 text-sm"></p>
         <button
-          class="border-2 border-stroke-strong rounded-full w-fit px-5 py-3 mx-2 flex hover:bg-brand hover:text-fill-background hover:border-transparent"
-          >SEND MESSAGE
+          id="submit-button"
+          type="submit"
+          class="border-2 border-stroke-strong rounded-full w-fit px-5 py-3 mx-2 flex hover:bg-brand hover:text-fill-background hover:border-transparent disabled:opacity-50 disabled:pointer-events-none"
+          ><span id="submit-label">SEND MESSAGE</span>
           <ArrowUpRight class="ml-2" size={24} stroke-width="1.5" />
         </button>
       </form>
@@ -95,15 +109,15 @@ import { Icon } from "astro-icon/components";
             href="https://www.linkedin.com/in/mhrafin/"
             class="flex w-full gap-2"
           >
-            <Icon name="mdi:linkedin" width="24" height="24" />
+            <AtSign size={24} />
             <p class="">in/mhrafin/</p>
           </a>
           <a href="mailto:mhrafin.code@gmail.com" class="flex w-full gap-2">
-            <Icon name="mdi:email" width="24" height="24" />
+            <Mail size={24} />
             <p class="">mhrafin.code@gmail.com</p>
           </a>
           <a href="https://t.me/mhrafin_dev" class="flex w-full gap-2">
-            <Icon name="mingcute:telegram-fill" width="24" height="24" />
+            <Send size={24} />
             <p class="">@mhrafin_dev</p>
           </a>
         </div>
@@ -111,3 +125,68 @@ import { Icon } from "astro-icon/components";
     </div>
   </div>
 </section>
+
+<script>
+  import { actions, isInputError } from "astro:actions";
+
+  const form = document.querySelector("#contact-form");
+  const nameError = document.querySelector("#name-error");
+  const emailError = document.querySelector("#email-error");
+  const messageError = document.querySelector("#message-error");
+  const formError = document.querySelector("#form-error");
+  const submitButton = document.querySelector("#submit-button");
+  const submitLabel = document.querySelector("#submit-label");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    submitButton.disabled = true;
+    const originalLabel = submitLabel.textContent;
+    submitLabel.textContent = "SENDING…";
+
+    try {
+      const { error } = await actions.submitMessage(new FormData(form));
+
+      if (isInputError(error)) {
+        for (const issue of error.issues) {
+          if (issue.path[0] === "name") nameError.textContent = issue.message;
+          if (issue.path[0] === "email") emailError.textContent = issue.message;
+
+          if (issue.path[0] === "message")
+            messageError.textContent = issue.message;
+        }
+        return;
+      }
+
+      if (error) {
+        formError.textContent = error.message;
+        return;
+      }
+
+      const card = document.querySelector("#home-contact-section > div");
+      card.innerHTML = `
+      <div class="grid grid-cols-2">
+      <div class="text-7xl font-display font-black">
+        Thank you for contacting me!
+      </div>
+      <div class="flex flex-col mt-6 gap-5">
+        <p class="text-4xl">I have received your message.</p>
+        <p>
+          Your message has been received and I will be contacting you shortly to
+          follow-up.
+        </p>
+      </div>
+    </div>
+      `;
+    } catch (err) {
+      console.error("Failed to submit contact form", err);
+      formError.textContent =
+        err instanceof Error && err.message
+          ? err.message
+          : "Something went wrong. Please try again.";
+    } finally {
+      submitButton.disabled = false;
+      submitLabel.textContent = originalLabel;
+    }
+  });
+</script>
