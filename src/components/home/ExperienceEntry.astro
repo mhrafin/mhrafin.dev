@@ -26,20 +26,24 @@ const end = endDate ? fmt.format(endDate) : "Present";
 const side = index % 2 === 0 ? "right" : "left";
 ---
 
-<div class={`grid grid-cols-[1fr_auto_1fr]`}>
-  <div class="flex flex-col text-right px-2 py-1">
+<div
+  class={`grid grid-cols-[auto_1fr] xl:grid-cols-[1fr_auto_1fr] text-sm sm:text-base`}
+>
+  <div
+    class={`flex flex-col order-2 xl:order-0 text-left xl:text-right px-2 py-1 ${side === "right" ? "hidden xl:block" : ""}`}
+  >
     {
       side === "left" && (
         <>
           <span class="font-bold">{jobTitle}</span>
           <span class="">{organization}</span>
           {highlight && (
-            <div class="text-base text-justify [text-align-last:right] w-100 text-text-weak">
+            <div class="xl:text-justify xl:[text-align-last:right] xl:w-100 text-text-weak">
               {highlight}
             </div>
           )}
           {skills && (
-            <div class="flex flex-wrap gap-1 mt-1 flex-row-reverse">
+            <div class="flex flex-wrap gap-1 mt-1 xl:flex-row-reverse mb-5">
               {skills.map((t) => (
                 <span class="rounded-full bg-fill-transparent-6 px-2 py-0.5 text-xs text-text-weak-transparent-78">
                   {t}
@@ -52,36 +56,38 @@ const side = index % 2 === 0 ? "right" : "left";
     }
   </div>
 
-  <div class="flex flex-col items-center mx-10">
+  <div class="flex flex-col items-center mx-3 xl:mx-10 order-1 xl:order-0">
     <div
-      class={`grid grid-cols-[1fr_auto_1fr] items-center rounded-full  ${isFirst ? "bg-brand text-fill-background" : "bg-raised-background"} px-2 py-1`}
+      class={`grid grid-cols-[1fr_auto_1fr] w-35 h-8 shrink-0 items-center rounded-full  ${isFirst ? "bg-brand text-fill-background" : "bg-raised-background"} px-2 py-1`}
     >
-      <span class="text-right">{start}</span>
-      <span class="px-1 justify-self-center">-</span>
-      <span class="text-left">{end}</span>
+      <span class="text-xs sm:text-sm text-right">{start}</span>
+      <span class="text-xs sm:text-sm px-1 justify-self-center">-</span>
+      <span class="text-xs sm:text-sm text-left">{end}</span>
     </div>
 
     {
       !isLast && (
         <div
-          class={`min-h-36 h-full border ${isFirst ? "border-brand" : "border-stroke-strong"} my-5 w-0`}
+          class={`min-h-36 h-full border xl:border ${isFirst ? "border-brand" : "border-stroke-strong"} my-5 w-0`}
         />
       )
     }
   </div>
-  <div class="flex flex-col text-left px-2 py-1">
+  <div
+    class={`flex flex-col text-left px-2 py-1 order-2 xl:order-0 ${side === "left" ? "hidden xl:block" : ""}`}
+  >
     {
       side === "right" && (
         <>
           <span class="font-bold">{jobTitle}</span>
           <span class="">{organization}</span>
           {highlight && (
-            <div class="text-base text-justify w-100 text-text-weak">
+            <div class=" xl:text-justify xl:w-100 text-text-weak">
               {highlight}
             </div>
           )}
           {skills && (
-            <div class="flex flex-wrap gap-1 mt-1">
+            <div class="flex flex-wrap gap-1 mt-1 mb-5">
               {skills.map((t) => (
                 <span class="rounded-full bg-fill-transparent-6 px-2 py-0.5 text-xs text-text-weak-transparent-78">
                   {t}

@@ -6,37 +6,49 @@ import MHRafinImage from "../../images/mhrafin.jpg";
 <section id="home-about-me-section">
   <div class="flex flex-col items-center justify-center min-h-svh">
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 w-full border-t lg:*:h-96"
+      class="grid grid-cols-2 w-full border-t border-stroke-strong xl:hidden"
     >
       <div
-        class="border-b lg:border-y border-stroke-strong text-[clamp(4rem,18vw,17.5rem)] font-black font-display col-span-1 sm:col-span-2 h-40 sm:h-48 flex items-center justify-center"
+        class="text-5xl md:text-8xl lg:text-9xl xl:text-[180px] 2xl:text-[280px] font-black font-display h-40 sm:h-48 flex items-center justify-center p-10"
       >
         ABOU
       </div>
       <div
-        class="border border-stroke-strong p-3 sm:p-6 lg:p-12 h-72 sm:h-80 lg:h-96"
+        class="border-l border-stroke-strong text-5xl md:text-8xl lg:text-9xl xl:text-[180px] 2xl:text-[280px] font-black font-display h-40 sm:h-48 flex items-center justify-center"
+      >
+        T
+      </div>
+    </div>
+    <div class="grid grid-cols-1 xl:grid-cols-4 gap-0 w-full xl:*:h-96">
+      <div
+        class="hidden xl:flex border-b xl:border-y border-stroke-strong text-5xl md:text-8xl lg:text-9xl xl:text-[180px] 2xl:text-[280px] font-black font-display col-span-1 xl:col-span-2 h-40 sm:h-48 items-center justify-center"
+      >
+        ABOU
+      </div>
+      <div
+        class="border-y xl:border border-stroke-strong p-3 sm:p-6 xl:p-12 h-90 sm:h-105 xl:h-120"
       >
         <div class="h-full w-full overflow-hidden rounded-xs relative">
           <Image
             src={MHRafinImage}
             alt="Mahedi Hassan Rafin is sat on a rock near a flowing river in a scenic place."
-            class="h-full w-full object-cover object-left scale-125 origin-left"
+            class="h-full w-full object-cover object-[12%_25%] origin-[0%_40%] scale-150"
           />
           <div class="absolute inset-0 bg-brand/80 mix-blend-multiply"></div>
         </div>
       </div>
       <div
-        class="border-b lg:border-y border-stroke-strong text-[clamp(4rem,18vw,17.5rem)] font-black font-display h-40 sm:h-48 flex items-center justify-center"
+        class="hidden xl:flex border-b xl:border-y border-stroke-strong text-5xl md:text-8xl lg:text-9xl xl:text-[180px] 2xl:text-[280px] font-black font-display h-40 sm:h-48 items-center justify-center"
       >
         T
       </div>
       <div
-        class="border-b border-stroke-strong text-[clamp(4rem,18vw,17.5rem)] font-black font-display h-40 sm:h-48 flex items-center justify-center"
+        class="border-b border-stroke-strong text-5xl md:text-8xl lg:text-9xl xl:text-[180px] 2xl:text-[280px] font-black font-display h-40 sm:h-48 flex items-center justify-center"
       >
         M
       </div>
       <div
-        class="border-b lg:border-l border-stroke-strong text-justify flex items-center p-5 min-h-40 sm:min-h-56"
+        class="border-b xl:border-l border-stroke-strong text-justify flex items-center p-5 min-h-40 sm:min-h-56"
       >
         I've spent the last year building backend systems that hold up under
         real use. I built 80+ REST API endpoints as the sole backend developer
@@ -46,7 +58,7 @@ import MHRafinImage from "../../images/mhrafin.jpg";
         and PostgreSQL.
       </div>
       <div
-        class="border-b lg:border-x border-stroke-strong text-[clamp(4rem,18vw,17.5rem)] font-black font-display h-40 sm:h-48 flex items-center justify-center"
+        class="border-b xl:border-x border-stroke-strong text-5xl md:text-8xl lg:text-9xl xl:text-[180px] 2xl:text-[280px] font-black font-display h-40 sm:h-48 flex items-center justify-center"
       >
         E
       </div>

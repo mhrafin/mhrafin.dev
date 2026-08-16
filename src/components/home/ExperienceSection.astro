@@ -8,17 +8,17 @@ const experiences = (await getCollection("experiences")).sort(
 ---
 
 <section id="home-experience-section">
-  <div class="flex flex-col items-center justify-center min-h-screen">
-    <div class="text-center m-20">
+  <div class="flex flex-col items-center justify-center min-h-screen my-30">
+    <div class="text-center m-1 sm:m-12 lg:m-20">
       <h2 class="">Experience</h2>
-      <p class="text-4xl max-w-6xl font-medium">
+      <p class="text-2xl sm:text-3xl lg:text-4xl max-w-6xl font-medium">
         "The competent programmer is fully aware of the strictly limited size of
         his own skull."
       </p>
       <span class="text-text-weak italic">- Dijkstra</span>
     </div>
 
-    <div class="flex flex-col items-center my-10">
+    <div class="flex flex-col items-center my-10 mx-1 max-w-4xl xl:max-w-full">
       {
         experiences.map((experience, index) => (
           <ExperienceEntry
