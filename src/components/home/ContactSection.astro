@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+// import { Image } from "astro:assets";
 import GetInTouch from "../../images/get_in_touch.svg";
 import {
   ArrowDownRight,
@@ -28,11 +28,9 @@ import {
           size={52}
           stroke-width="0.5"
         />
-        <Image
-          src={GetInTouch}
-          alt="Get in touch"
-          class="w-32 sm:w-40 md:w-48 xl:w-auto"
-        />
+        <div class="flex items-center w-32 sm:w-40 md:w-48 xl:w-auto">
+          <GetInTouch />
+        </div>
       </div>
     </div>
     <p class="max-w-2xl text-sm sm:text-base">
