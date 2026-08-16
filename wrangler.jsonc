@@ -1,12 +1,11 @@
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "compatibility_date": "2026-08-15",
-  "compatibility_flags": ["global_fetch_strictly_public"],
+  "main": "dist/_worker.js/index.js",
   "name": "mhrafin-dev",
-  "main": "@astrojs/cloudflare/entrypoints/server",
+  "compatibility_date": "2026-08-16", // Update to the day you deploy
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
-    "directory": "./dist",
     "binding": "ASSETS",
+    "directory": "./dist",
   },
   "observability": {
     "enabled": true,
