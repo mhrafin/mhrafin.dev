@@ -1,13 +1,16 @@
 {
-  "main": "@astrojs/cloudflare/entrypoints/server",
-  "name": "mhrafin-dev",
-  "compatibility_date": "2026-08-16", // Update to the day you deploy
-  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
-  "assets": {
-    "binding": "ASSETS",
-    "directory": "./dist",
-  },
-  "observability": {
-    "enabled": true,
-  },
+	"main": "@astrojs/cloudflare/entrypoints/server",
+	"name": "mhrafin-dev",
+	"compatibility_date": "2026-08-16", // Update to the day you deploy
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public"
+	],
+	"assets": {
+		"binding": "ASSETS",
+		"directory": "./dist",
+	},
+	"observability": {
+		"enabled": true,
+	},
 }
