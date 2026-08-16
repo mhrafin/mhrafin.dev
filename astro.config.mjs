@@ -12,8 +12,11 @@ import react from "@astrojs/react";
 
 import cloudflare from "@astrojs/cloudflare";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
+  site: "https://mhrafin.dev",
   fonts: [
     {
       provider: fontProviders.fontsource(),
@@ -26,7 +29,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  integrations: [react()],
+  integrations: [react(), sitemap()],
 
   env: {
     schema: {
