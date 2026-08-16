@@ -15,8 +15,16 @@ export const server = {
         .string()
         .min(10, "Message must be at least 10 characters.")
         .max(5000, "Message must 5000 characters or fewer."),
+      website: z.string().optional(),
+      formStart: z.coerce.number().optional(),
     }),
     handler: async (input) => {
+      const { website, formStart } = input;
+
+      const tooFast =
+        typeof formStart === "number" && Date.now() - formStart < 5000;
+      if (website || tooFast) return; // silent swallow: no email, bot sees "success"
+
       const { name, email, message = "" } = input;
 
       let result;

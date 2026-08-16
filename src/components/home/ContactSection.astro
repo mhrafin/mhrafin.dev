@@ -46,6 +46,15 @@ import {
         method="POST"
         class="flex flex-col gap-4 sm:gap-6 xl:col-span-2 xl:gap-10"
       >
+        <input
+          type="text"
+          name="website"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
+          class="absolute left-[-9999px] w-px h-px overflow-hidden"
+        />
+        <input type="hidden" name="form-start" id="form-start" />
         <div
           class="grid grid-cols-[auto_1fr] gap-3 sm:gap-4 xl:gap-10 max-w-150"
         >
@@ -154,44 +163,49 @@ import {
 <script>
   import { actions, isInputError } from "astro:actions";
 
-  const form = document.querySelector("#contact-form");
-  const nameError = document.querySelector("#name-error");
-  const emailError = document.querySelector("#email-error");
-  const messageError = document.querySelector("#message-error");
-  const formError = document.querySelector("#form-error");
-  const submitButton = document.querySelector("#submit-button");
-  const submitLabel = document.querySelector("#submit-label");
+  const form = document.querySelector<HTMLFormElement>("#contact-form");
 
-  form?.addEventListener("submit", async (event) => {
-    event.preventDefault();
+  if (form) {
+    const formStart = form.querySelector<HTMLInputElement>("#form-start");
+    const submitButton =
+      form.querySelector<HTMLButtonElement>("#submit-button");
+    const submitLabel = form.querySelector("#submit-label");
+    const formError = form.querySelector("#form-error");
 
-    submitButton.disabled = true;
-    const originalLabel = submitLabel.textContent;
-    submitLabel.textContent = "SENDING…";
+    if (formStart) formStart.value = String(Date.now());
 
-    try {
-      const { error } = await actions.submitMessage(new FormData(form));
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
 
-      if (isInputError(error)) {
-        for (const issue of error.issues) {
-          if (issue.path[0] === "name") nameError.textContent = issue.message;
-          if (issue.path[0] === "email") emailError.textContent = issue.message;
+      if (submitButton) submitButton.disabled = true;
+      const originalLabel = submitLabel?.textContent ?? null;
+      if (submitLabel) submitLabel.textContent = "SENDING…";
 
-          if (issue.path[0] === "message")
-            messageError.textContent = issue.message;
+      try {
+        const { error } = await actions.submitMessage(new FormData(form));
+
+        if (isInputError(error)) {
+          for (const [name, messages] of Object.entries(error.fields)) {
+            const field = form.elements.namedItem(name);
+            const errorEl =
+              field instanceof Element
+                ? field.parentElement?.querySelector("p")
+                : null;
+            errorEl?.replaceChildren(messages?.[0] ?? "");
+          }
+          return;
         }
-        return;
-      }
 
-      if (error) {
-        formError.textContent = error.message;
-        return;
-      }
+        if (error) {
+          if (formError) formError.textContent = error.message;
+          return;
+        }
 
-      const card = document.querySelector("#home-contact-section > div");
-      card.innerHTML = `
+        const card = document.querySelector("#home-contact-section > div");
+        if (card) {
+          card.innerHTML = `
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 gap-4 md:gap-8">
-      <div class="text-3xl lg:text-5xl 2xl:text-9xl font-display font-black">
+      <div class="text-3xl lg:text-5xl 2xl:text-7xl font-display font-black">
         Thank you for contacting me!
       </div>
       <div class="flex flex-col mt-0 gap-4  2xl:mt-6 md:gap-5">
@@ -203,15 +217,19 @@ import {
       </div>
     </div>
       `;
-    } catch (err) {
-      console.error("Failed to submit contact form", err);
-      formError.textContent =
-        err instanceof Error && err.message
-          ? err.message
-          : "Something went wrong. Please try again.";
-    } finally {
-      submitButton.disabled = false;
-      submitLabel.textContent = originalLabel;
-    }
-  });
+        }
+      } catch (err) {
+        console.error("Failed to submit contact form", err);
+        if (formError) {
+          formError.textContent =
+            err instanceof Error && err.message
+              ? err.message
+              : "Something went wrong. Please try again.";
+        }
+      } finally {
+        if (submitButton) submitButton.disabled = false;
+        if (submitLabel) submitLabel.textContent = originalLabel;
+      }
+    });
+  }
 </script>
