@@ -18,32 +18,7 @@ export default defineConfig({
   ],
 
   vite: {
-    plugins: [
-      tailwindcss(),
-      {
-        name: "prebundle-client-deps",
-        configEnvironment(environmentName, config) {
-          if (environmentName !== "client") return;
-          config.optimizeDeps ??= {};
-          config.optimizeDeps.include ??= [];
-          config.optimizeDeps.include.push(
-            "@lucide/astro",
-            "astro/actions/runtime/entrypoints/client.js",
-          );
-        },
-      },
-    ],
-    optimizeDeps: {
-      include: [
-        "@lucide/astro",
-        "resend",
-        "react",
-        "react-dom",
-        "react/jsx-runtime",
-        "react/jsx-dev-runtime",
-        "astro/logger/json",
-      ],
-    },
+    plugins: [tailwindcss()],
   },
 
   integrations: [react()],
