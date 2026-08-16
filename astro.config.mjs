@@ -1,5 +1,10 @@
 // @ts-check
-import { defineConfig, fontProviders, envField } from "astro/config";
+import {
+  defineConfig,
+  fontProviders,
+  envField,
+  svgoOptimizer,
+} from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -41,4 +46,8 @@ export default defineConfig({
   },
 
   adapter: cloudflare(),
+
+  experimental: {
+    svgOptimizer: svgoOptimizer(),
+  },
 });
