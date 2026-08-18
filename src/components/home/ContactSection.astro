@@ -64,10 +64,13 @@ import {
             </div>
           </div>
           <div class="flex flex-col py-1">
-            <label class="text-sm sm:text-base">What's your name?</label>
+            <label class="text-sm sm:text-base" for="name"
+              >What's your name?</label
+            >
             <input
               type="text"
               name="name"
+              id="name"
               required
               class="w-full bg-transparent border-0 border-b-2 border-stroke-weak
          focus:border-stroke-strong outline-none transition-colors py-3"
@@ -87,12 +90,13 @@ import {
             </div>
           </div>
           <div class="flex flex-col py-1">
-            <label class="text-sm sm:text-base"
+            <label class="text-sm sm:text-base" for="email"
               >What's your email address?</label
             >
             <input
               type="email"
               name="email"
+              id="email"
               required
               class="w-full bg-transparent border-0 border-b-2 border-stroke-weak
          focus:border-stroke-strong outline-none transition-colors py-3"
@@ -112,9 +116,12 @@ import {
             </div>
           </div>
           <div class="flex flex-col py-1">
-            <label class="text-sm sm:text-base">What's your message?</label>
+            <label class="text-sm sm:text-base" for="message"
+              >What's your message?</label
+            >
             <textarea
               name="message"
+              id="message"
               required
               rows={4}
               class="w-full bg-transparent border-0 border-b-2 border-stroke-weak
