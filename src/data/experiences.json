@@ -18,12 +18,12 @@
     "highlight": "Led migration of an School Management System from CodeIgniter to DRF, designed C4-based architecture, built CI/CD, eliminated N+1 queries which cut API response time from 22s to 2s."
   },
   "3": {
-    "organization": "Self-employed",
-    "jobTitle": "Freelance Software Engineer",
-    "startDate": "2026-04",
+    "organization": "NexM",
+    "jobTitle": "Software Engineer (Contract)",
+    "startDate": "2026-05",
 
-    "location": "Dhaka, Bangladesh",
-    "skills": ["Python", "DRF", "FastAPI", "PostgreSQL", "RAG"],
-    "highlight": "Working independently with clients on backend and full-stack projects, including a CMS platform, a startup landing page, and a government-sector engagement."
+    "location": "Tokyo, Japan (Remote)",
+    "skills": ["Next.js", "FastAPI", "PostgreSQL", "SDLC"],
+    "highlight": "Built and launched NexM's official landing page. Led SDLC initiation & planning for a real-time booking platform."
   }
 }

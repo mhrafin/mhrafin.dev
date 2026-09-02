@@ -1,0 +1,11 @@
+{
+  "3": {
+    "organization": "Self-employed",
+    "jobTitle": "Freelance Software Engineer",
+    "startDate": "2026-04",
+
+    "location": "Dhaka, Bangladesh",
+    "skills": ["Python", "DRF", "FastAPI", "PostgreSQL", "RAG"],
+    "highlight": "Working independently with clients on backend and full-stack projects, including a CMS platform, a startup landing page, and a government-sector engagement."
+  }
+}
